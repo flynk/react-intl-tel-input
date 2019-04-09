@@ -972,7 +972,10 @@ class IntlTelInputApp extends Component {
 
       if (prevDialCode) {
         // current number contains a valid dial code, so replace it
-        newNumber = currentNumber.replace(prevDialCode, newDialCode);
+        // US & Canada has the same +1 dial code
+        if (prevDialCode.charAt(1) !== '1') {
+          newNumber = currentNumber.replace(prevDialCode, newDialCode);
+        }
       } else {
         // current number contains an invalid dial code, so ditch it
         // (no way to determine where the invalid dial code ends and the rest of the number begins)
