@@ -150,6 +150,10 @@ class IntlTelInputApp extends Component {
       this.updateFlagFromNumber(this.props.value);
     }
 
+    if (!this.props.value && prevProps.defaultCountry !== this.props.defaultCountry) {
+      this.setFlag(this.props.defaultCountry, false)
+    }
+
     if (
       typeof this.props.customPlaceholder === 'function' &&
       prevProps.customPlaceholder !== this.props.customPlaceholder
